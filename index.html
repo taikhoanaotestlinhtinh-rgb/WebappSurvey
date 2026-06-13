@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BizBridge Survey</title>
+<title>BizBridge Persona Survey</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --teal:#1D9E75;--teal-dark:#0F6E56;--teal-light:#E1F5EE;
-  --purple-dark:#3C3489;--purple-light:#EEEDFE;--purple-mid:#AFA9EC;
-  --coral:#D85A30;
+  --purple-dark:#3C3489;--purple-light:#EEEDFE;
+  --coral:#D85A30;--coral-light:#FAECE7;
+  --amber:#D97706;--amber-light:#FEF3C7;
+  --blue:#2563EB;--blue-light:#DBEAFE;
   --gray-50:#F8F7F4;--gray-100:#F1EFE8;--gray-200:#D3D1C7;--gray-400:#888780;
   --text-primary:#1a1a18;--text-secondary:#5F5E5A;--text-hint:#888780;
   --border:rgba(0,0,0,0.10);--border-md:rgba(0,0,0,0.18);
@@ -23,7 +25,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg-surface);color:var(--tex
 .logo{width:32px;height:32px;background:var(--teal);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:700}
 .logo-t{font-size:15px;font-weight:600}
 .logo-s{font-size:12px;color:var(--text-secondary);margin-left:4px}
-.page{max-width:640px;margin:0 auto;padding:32px 20px 80px}
+.page{max-width:680px;margin:0 auto;padding:32px 20px 80px}
 .prog-wrap{margin-bottom:28px}
 .prog-meta{display:flex;justify-content:space-between;margin-bottom:8px}
 .prog-lbl{font-size:13px;font-weight:500;color:var(--text-secondary)}
@@ -34,7 +36,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg-surface);color:var(--tex
 .p1{background:var(--teal-light);color:var(--teal-dark)}
 .p2{background:var(--purple-light);color:var(--purple-dark)}
 .s-title{font-size:22px;font-weight:600;margin-bottom:6px;line-height:1.3}
-.s-desc{font-size:14px;color:var(--text-secondary);margin-bottom:24px;line-height:1.7}
+.s-desc{font-size:14px;color:var(--text-secondary);margin-bottom:18px;line-height:1.7}
+.hint-box{background:var(--gray-50);border-left:3px solid var(--teal);border-radius:6px;padding:10px 14px;margin-bottom:18px;font-size:13px;color:var(--text-secondary);line-height:1.6}
+.hint-box strong{color:var(--text-primary)}
 .card{background:var(--bg);border:1px solid var(--border);border-radius:var(--rlg);padding:24px;box-shadow:var(--shadow)}
 .field+.field{margin-top:20px}
 .flabel{display:block;font-size:13px;font-weight:500;color:var(--text-secondary);margin-bottom:7px}
@@ -95,6 +99,11 @@ textarea{resize:vertical;min-height:90px;line-height:1.6}
 .sp{width:36px;height:36px;border:3px solid var(--teal-light);border-top-color:var(--teal);border-radius:50%;animation:spin 0.8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .sp-t{font-size:15px;font-weight:500;color:var(--text-secondary)}
+.section-icon{display:inline-block;width:22px;height:22px;border-radius:50%;text-align:center;line-height:22px;font-size:13px;font-weight:700;color:#fff;margin-right:6px;vertical-align:-3px}
+.icon-goals{background:var(--teal)}
+.icon-wants{background:var(--blue)}
+.icon-needs{background:var(--amber)}
+.icon-fears{background:var(--coral)}
 @media(max-width:520px){.imeta{grid-template-columns:1fr 1fr}.mcard:last-child{grid-column:span 2}.rbtn{width:36px;height:36px}.s-title{font-size:19px}}
 </style>
 </head>
@@ -102,29 +111,29 @@ textarea{resize:vertical;min-height:90px;line-height:1.6}
 <header class="hdr">
   <div class="logo">B</div>
   <span class="logo-t">BizBridge</span>
-  <span class="logo-s">Poznan &mdash; Design Thinking Survey</span>
+  <span class="logo-s">Poznan &mdash; Persona Research</span>
 </header>
 <div class="ov" id="ov"><div class="sp"></div><div class="sp-t">Submitting&hellip;</div></div>
 <main class="page">
   <div id="s-intro">
     <div class="ihero">
-      <h1>Poznan BizBridge</h1>
-      <p>Help us build the right solution for international students in Poznan. Your answers directly shape what we design next.</p>
+      <h1>BizBridge Persona Research</h1>
+      <p>Help us build the right solution for international students in Poznan. Your story will directly shape our design.</p>
       <div class="pills">
-        <span class="pill">Sandbox SAP / Salesforce</span>
-        <span class="pill">Legal Navigator</span>
-        <span class="pill">Bilingual Co-op</span>
-        <span class="pill">Verified Talent Hub</span>
+        <span class="pill">Goals</span>
+        <span class="pill">Wants</span>
+        <span class="pill">Needs</span>
+        <span class="pill">Fears</span>
       </div>
     </div>
     <div class="imeta">
       <div class="mcard"><div class="mnum">2</div><div class="mlbl">Parts</div></div>
-      <div class="mcard"><div class="mnum">10</div><div class="mlbl">Questions</div></div>
-      <div class="mcard"><div class="mnum">~5 min</div><div class="mlbl">Estimated</div></div>
+      <div class="mcard"><div class="mnum">~12</div><div class="mlbl">Questions</div></div>
+      <div class="mcard"><div class="mnum">~7 min</div><div class="mlbl">Estimated</div></div>
     </div>
     <p class="inote">
-      <strong>Part 1 &mdash; Persona:</strong> We want to understand who you are, your situation, and the obstacles you face when looking for work in Poznan.<br><br>
-      <strong>Part 2 &mdash; Feedback:</strong> After learning about BizBridge, tell us what resonates, what is missing, and how likely you are to use it.
+      <strong>Part 1 &mdash; Persona Profile (Design Thinking):</strong> Tell us about yourself, your story, your goals, wants, needs and fears as an international student in Poznan.<br><br>
+      <strong>Part 2 &mdash; Solution Feedback:</strong> After learning about BizBridge, share what resonates and what is missing.
     </p>
     <button class="bstart" onclick="gotoStep(1)">Start the survey &#8594;</button>
   </div>
@@ -132,9 +141,9 @@ textarea{resize:vertical;min-height:90px;line-height:1.6}
     <div class="prog-wrap">
       <div class="prog-meta">
         <span class="prog-lbl" id="prog-lbl">Part 1 - Persona</span>
-        <span class="prog-cnt" id="prog-cnt">1 / 10</span>
+        <span class="prog-cnt" id="prog-cnt">1 / 12</span>
       </div>
-      <div class="prog-track"><div class="prog-fill" id="pbar" style="width:10%"></div></div>
+      <div class="prog-track"><div class="prog-fill" id="pbar" style="width:8%"></div></div>
     </div>
     <div id="step-content"></div>
     <div class="nav">
@@ -146,7 +155,7 @@ textarea{resize:vertical;min-height:90px;line-height:1.6}
     <div class="swrap">
       <div class="sicon">&#10003;</div>
       <h2>Thank you!</h2>
-      <p>Your response has been saved to Google Sheets. It will directly inform how BizBridge is designed.</p>
+      <p>Your Persona has been saved. It will directly inform how BizBridge is designed for students like you.</p>
       <a class="sbtn" href="https://docs.google.com/spreadsheets/d/1scAx5-qtNYFvYpWawFuit1CvZmUDUy1pxgLR7Bixk-w" target="_blank" rel="noopener">View responses in Google Sheets</a>
       <br>
       <button class="bagain" onclick="resetSurvey()">Submit another response</button>
@@ -154,49 +163,224 @@ textarea{resize:vertical;min-height:90px;line-height:1.6}
   </div>
 </main>
 <script>
-var WEBHOOK = "https://script.google.com/macros/s/AKfycbwYgGyXP4fw1S9Iv0y7Tej4_uEkgA-K3SpyxZjndhXejX2tMbuIJzoS1_MPwk_22iWK7g/exec";
+var WEBHOOK = "https://script.google.com/macros/s/AKfycbztpJzXY9Rz4kEIlUl9d9arp6lpEbV1nnB9YbHzi-ZTq7tPH_2G3FMsG7kutzk5zR9miA/exec";
 var ans = {};
 var step = 0;
+
 var steps = [
-  {ph:1,pl:"Part 1 - Persona",ti:"Personal background",de:"Help us understand who you are and where you are coming from.",fi:[
-    {id:"fullName",lb:"Full name",ty:"text",ph:"e.g. Nguyen Van A",req:1},
-    {id:"age",lb:"Age",ty:"number",ph:"e.g. 22",req:1},
-    {id:"nationality",lb:"Nationality",ty:"text",ph:"e.g. Vietnamese, Indian",req:1}
-  ]},
-  {ph:1,pl:"Part 1 - Persona",ti:"Your studies in Poznan",de:"Tell us about your university and programme.",fi:[
-    {id:"university",lb:"University",ty:"select",req:1,op:["-- Select your university --","Poznan University of Economics and Business (PUEB)","WSB Merito University","Adam Mickiewicz University (UAM)","Poznan University of Technology","Other"]},
-    {id:"program",lb:"Study programme",ty:"text",ph:"e.g. Business Administration, Logistics, Finance",req:1},
-    {id:"year",lb:"Year of study",ty:"select",req:1,op:["-- Select year --","1st year (Bachelor)","2nd year (Bachelor)","3rd year (Bachelor)","4th year (Bachelor)","1st year (Master)","2nd year (Master)"]}
-  ]},
-  {ph:1,pl:"Part 1 - Persona",ti:"Language skills",de:"Language proficiency directly affects job opportunities in Poznan.",fi:[
-    {id:"polish",lb:"Polish",ty:"select",req:1,op:["-- Select level --","None (A0)","Beginner (A1-A2)","Intermediate (B1-B2)","Advanced (C1-C2)"]},
-    {id:"english",lb:"English",ty:"select",req:1,op:["-- Select level --","Beginner (A1-A2)","Intermediate (B1-B2)","Advanced (C1-C2)","Native / Near-native"]},
-    {id:"german",lb:"German (optional)",ty:"select",req:0,op:["-- None --","Beginner (A1-A2)","Intermediate (B1-B2)","Advanced (C1-C2)"]}
-  ]},
-  {ph:1,pl:"Part 1 - Persona",ti:"Work experience",de:"What does your professional background look like right now?",fi:[
-    {id:"workExp",lb:"Current experience status",ty:"radio",req:1,op:["No experience yet","Working part-time in Poland","Completed an internship in Poland","Have professional experience abroad","Actively looking for my first job"]}
-  ]},
-  {ph:1,pl:"Part 1 - Persona",ti:"Biggest challenges",de:"Which obstacles have you personally faced when looking for work in Poznan? Select all that apply.",fi:[
-    {id:"challenges",lb:"Challenges you face",ty:"checkbox",req:1,op:["Lack of practical skills (SAP, Excel, Salesforce, ERP systems)","Language barrier - Polish or German","Unclear legal situation (residence permit, work permit)","No local professional network","CV ignored by employers or ATS filters","Do not know where or how to start"]}
-  ]},
-  {ph:1,pl:"Part 1 - Persona",ti:"Legal awareness and tool experience",de:"Two quick questions to close out the Persona section.",fi:[
-    {id:"legalAware",lb:"How well do you understand your legal right to work in Poland?",ty:"radio",req:1,op:["Very clearly - I know all the rules","Roughly - but I have unanswered questions","Not well - I find it confusing","I have not needed to think about it yet"]},
-    {id:"usedTools",lb:"Have you ever used SAP, Salesforce, or any ERP system professionally?",ty:"radio",req:1,op:["Never","Studied theory only, no hands-on practice","Used them in an academic setting","Used them in a real work environment"]}
-  ]},
-  {ph:2,pl:"Part 2 - Solution feedback",ti:"Overall impression of BizBridge",de:"BizBridge is an integrated ecosystem for international students in Poznan: a job-simulation sandbox (SAP/Salesforce), a legal residency navigator, a bilingual co-op programme, and a verified talent hub for employers. How compelling does this feel to you?",fi:[
-    {id:"overallRating",lb:"Overall appeal (1 = Not useful at all, 10 = Extremely valuable)",ty:"rating",max:10,req:1,el:"Not useful",er:"Extremely valuable"}
-  ]},
-  {ph:2,pl:"Part 2 - Solution feedback",ti:"Most valuable features",de:"Which parts of BizBridge would you actually use? Select everything that applies.",fi:[
-    {id:"valuedFeatures",lb:"Features you find valuable",ty:"checkbox",req:1,op:["Job simulation sandbox - practice real tasks in SAP/Salesforce","Legal Navigator - step-by-step residence permit guidance","MOS Tracker - crowd-sourced wait-time estimates at the provincial office","Micro-credentials - digital badges to add to CV / LinkedIn","Bilingual Co-op - paired projects with a local Polish student","Micro-Consulting - 4-6 week real consulting project with a Poznan company","Verified Talent Hub - validated profile sent directly to HR"]}
-  ]},
-  {ph:2,pl:"Part 2 - Solution feedback",ti:"Likelihood to use and recommend",de:"Two short rating questions.",fi:[
-    {id:"likelihood",lb:"How likely are you to use BizBridge when it launches? (1 = Definitely not, 5 = Definitely yes)",ty:"rating",max:5,req:1,el:"Definitely not",er:"Definitely yes"},
-    {id:"recommend",lb:"How likely are you to recommend it to other international students? (1-5)",ty:"rating",max:5,req:1,el:"Would not recommend",er:"Would strongly recommend"}
-  ]},
-  {ph:2,pl:"Part 2 - Solution feedback",ti:"Open feedback",de:"The most valuable part of any Design Thinking survey. Be as direct as you like.",fi:[
-    {id:"missing",lb:"What feature do you wish BizBridge had, but does not seem to include?",ty:"textarea",ph:"e.g. specific mentor matching, community forum, more language support",req:0},
-    {id:"openFeedback",lb:"Any other thoughts on the BizBridge concept?",ty:"textarea",ph:"Your honest take...",req:0}
-  ]}
+  // ============ PART 1: PERSONA ============
+  {ph:1, pl:"Part 1 - Persona", ti:"Basic information",
+   de:"Let's start with who you are.",
+   fi:[
+     {id:"fullName",   lb:"First & last name", ty:"text",   ph:"e.g. Nguyen Van A", req:1},
+     {id:"age",        lb:"Age",               ty:"number", ph:"e.g. 22",           req:1},
+     {id:"nationality",lb:"Nationality",       ty:"text",   ph:"e.g. Vietnamese",   req:1},
+     {id:"position",   lb:"Position (your current status)", ty:"select", req:1, op:[
+       "-- Select --",
+       "Freshman student",
+       "Sophomore student",
+       "Junior student",
+       "Senior student",
+       "Master student",
+       "PhD student",
+       "Recent graduate"
+     ]}
+   ]
+  },
+
+  {ph:1, pl:"Part 1 - Persona", ti:"Industry & education",
+   de:"Tell us about your field of study.",
+   fi:[
+     {id:"industry", lb:"Industry / field of interest", ty:"select", req:1, op:[
+       "-- Select --",
+       "Economy / Business",
+       "Finance / Accounting",
+       "Marketing / Sales",
+       "IT / Computer Science",
+       "Engineering",
+       "Logistics / Supply Chain",
+       "Tourism / Hospitality",
+       "Other"
+     ]},
+     {id:"education", lb:"Education programme", ty:"text", ph:"e.g. BA Finance, MSc Logistics...", req:1},
+     {id:"location",  lb:"Where do you live in Poland?", ty:"text", ph:"e.g. Poznan, Krakow, Warsaw...", req:1}
+   ]
+  },
+
+  {ph:1, pl:"Part 1 - Persona", ti:"Your Story",
+   de:"In a few sentences, tell us your journey: why did you come to Poland to study, what is your background, and what is your situation right now?",
+   hint:"<strong>Story</strong> is the narrative context of your life. It helps us understand WHO you are beyond a checklist - the emotional and circumstantial backdrop of your decisions.",
+   fi:[
+     {id:"story", lb:"Your story (3-5 sentences)", ty:"textarea",
+      ph:"e.g. I am a final-year student studying in Poland. As an international student, I have found the higher education system interesting and full of opportunities...", req:1}
+   ]
+  },
+
+  {ph:1, pl:"Part 1 - Persona", ti:"Goals - Long-term destination",
+   de:"What are the BIG milestones you want to achieve in your career and life? These are your strategic checkpoints.",
+   hint:"<span class='section-icon icon-goals'>&#10003;</span><strong>Goals</strong> = your long-term targets. Select all that apply to your ambitions.",
+   fi:[
+     {id:"goals", lb:"Select your career & life goals", ty:"checkbox", req:1, op:[
+       "Find a suitable major / right field of study",
+       "Receive an internship offer",
+       "Work at a multinational company with high salary",
+       "Build a clear 5-year promotion plan",
+       "Build a strong network with industry professionals",
+       "Become an expert / specialist in my field",
+       "Start my own business",
+       "Permanently settle and live in Poland / EU"
+     ]},
+     {id:"goalsOther", lb:"Any other personal goals? (optional)", ty:"textarea", ph:"Write anything else you aim for...", req:0}
+   ]
+  },
+
+  {ph:1, pl:"Part 1 - Persona", ti:"Wants - What you actively look for",
+   de:"What specific things are you actively searching for RIGHT NOW to solve your problems? These are the surface-level solutions you believe you need.",
+   hint:"<span class='section-icon icon-wants'>&#9733;</span><strong>Wants</strong> = the things you actively shop for. Be honest - what would you click on tomorrow if you saw it?",
+   fi:[
+     {id:"wants", lb:"Select everything you actively want", ty:"checkbox", req:1, op:[
+       "Consultations from experts in diverse majors",
+       "A tool to find jobs matching my CV and skills",
+       "Real-world working / internship opportunities",
+       "Affordable Polish language learning resources",
+       "Financial literacy guides for foreigners",
+       "Help with residence permit / legal paperwork",
+       "Help building a professional CV",
+       "A community of peers in similar situation"
+     ]},
+     {id:"wantsOther", lb:"Anything else you wish existed? (optional)", ty:"textarea", ph:"What service or tool do you wish someone would build?", req:0}
+   ]
+  },
+
+  {ph:1, pl:"Part 1 - Persona", ti:"Needs - Core underlying needs",
+   de:"What do you ACTUALLY need (often deeper than what you want) to reach your goals? These are the root requirements - the foundation.",
+   hint:"<span class='section-icon icon-needs'>!</span><strong>Needs</strong> = the foundational requirements. They might not be flashy, but without them you cannot reach your goals.",
+   fi:[
+     {id:"needs", lb:"Select your core needs", ty:"checkbox", req:1, op:[
+       "Clear and accessible career information in English",
+       "Personalised career recommendations based on my profile",
+       "Guidance from advisors or experienced students / alumni",
+       "Opportunities to try real work (internships, projects)",
+       "Verified information about legal / work permit status",
+       "Skill validation that HR / employers actually trust",
+       "Cultural and language bridge to local society",
+       "Mental and emotional support during transition"
+     ]},
+     {id:"needsOther", lb:"What deeper need is not listed above? (optional)", ty:"textarea", ph:"Sometimes you know you need something but cannot name it - try here", req:0}
+   ]
+  },
+
+  {ph:1, pl:"Part 1 - Persona", ti:"Fears - Your biggest worries",
+   de:"What are the worst-case scenarios that haunt you? What blocks you from taking action? Be honest - these reveal the real barriers we need to break.",
+   hint:"<span class='section-icon icon-fears'>&#10007;</span><strong>Fears</strong> = the worries that keep you up at night. Naming them is the first step to overcoming them.",
+   fi:[
+     {id:"fears", lb:"Select your biggest fears", ty:"checkbox", req:1, op:[
+       "Choosing the wrong career path",
+       "Wasting years studying the wrong field",
+       "Missing important information due to language barriers",
+       "Having low salary and unstable income",
+       "Not having enough skills for the job market",
+       "Being rejected by HR because I am foreign",
+       "Getting deported or losing legal status",
+       "Returning home without achieving anything"
+     ]},
+     {id:"fearsOther", lb:"Any other fear you live with? (optional)", ty:"textarea", ph:"Sometimes the deepest fears are the unspoken ones...", req:0}
+   ]
+  },
+
+  {ph:1, pl:"Part 1 - Persona", ti:"Tools - Your current skill set",
+   de:"Which professional tools and skills are you proficient at, learning, or frustrated with right now?",
+   hint:"This maps your current capability. Be realistic - it helps us know where to start.",
+   fi:[
+     {id:"toolsProficient", lb:"Tools you are PROFICIENT at", ty:"checkbox", req:0, op:[
+       "Microsoft Excel",
+       "Microsoft Word / Google Docs",
+       "PowerPoint / Presentations",
+       "Canva / Design tools",
+       "SAP / ERP systems",
+       "Salesforce / CRM",
+       "Python / R / Data analysis",
+       "English (professional level)",
+       "Polish (B1 or higher)"
+     ]},
+     {id:"toolsProficientOther", lb:"Other tools you are proficient at (optional)", ty:"textarea", ph:"e.g. Figma, Tableau, AutoCAD, Adobe Photoshop, German language...", req:0},
+
+     {id:"toolsLearning", lb:"Tools you are CURRENTLY LEARNING", ty:"checkbox", req:0, op:[
+       "Microsoft Excel (advanced)",
+       "SAP / ERP systems",
+       "Salesforce / CRM",
+       "Python / R / Data analysis",
+       "Polish language",
+       "German language",
+       "Public speaking",
+       "Project management"
+     ]},
+     {id:"toolsLearningOther", lb:"Other tools you are learning (optional)", ty:"textarea", ph:"e.g. Power BI, SQL, negotiation skills, Spanish...", req:0},
+
+     {id:"toolsFrustrated", lb:"Tools that FRUSTRATE you", ty:"checkbox", req:0, op:[
+       "Polish bureaucracy websites (e.g. MOS, ZUS, US)",
+       "University career portals",
+       "LinkedIn job filtering",
+       "CV builders",
+       "Polish language apps",
+       "None - I am doing fine"
+     ]},
+     {id:"toolsFrustratedOther", lb:"Other tools that frustrate you (optional)", ty:"textarea", ph:"e.g. specific apps, websites, processes that waste your time...", req:0}
+   ]
+  },
+
+  {ph:1, pl:"Part 1 - Persona", ti:"Often / Seldom - Job hunting platforms",
+   de:"Which platforms do you use to find jobs, internships, or career information?",
+   hint:"This shows us where to meet you - and where you are currently NOT being reached.",
+   fi:[
+     {id:"often", lb:"Platforms you use OFTEN", ty:"checkbox", req:1, op:[
+       "LinkedIn",
+       "Pracuj.pl",
+       "OLX",
+       "Cityjob.pl",
+       "Glassdoor",
+       "Indeed",
+       "JustJoin.it",
+       "University career office",
+       "Friends and word-of-mouth",
+       "Facebook groups"
+     ]},
+     {id:"seldom", lb:"Platforms you RARELY or NEVER use", ty:"checkbox", req:0, op:[
+       "Job fairs",
+       "Facebook job groups",
+       "Company career pages",
+       "University career office",
+       "Headhunters / recruiters",
+       "Local Polish-only job boards",
+       "Telegram / Discord communities"
+     ]}
+   ]
+  },
+
+  // ============ PART 2: FEEDBACK ============
+  {ph:2, pl:"Part 2 - Solution feedback", ti:"Overall impression of BizBridge",
+   de:"BizBridge is an integrated ecosystem for international students in Poznan: a job-simulation sandbox (SAP/Salesforce), a legal residency navigator, a bilingual co-op programme, and a verified talent hub for employers. How compelling does this feel to you?",
+   fi:[
+     {id:"overallRating", lb:"Overall appeal (1 = Not useful, 10 = Extremely valuable)", ty:"rating", max:10, req:1, el:"Not useful", er:"Extremely valuable"}
+   ]
+  },
+
+  {ph:2, pl:"Part 2 - Solution feedback", ti:"Most valuable features",
+   de:"Which parts of BizBridge would you actually use?",
+   fi:[
+     {id:"valuedFeatures", lb:"Select all that apply", ty:"checkbox", req:1, op:[
+       "Job simulation sandbox - practice real tasks in SAP/Salesforce",
+       "Legal Navigator - step-by-step residence permit guidance",
+       "MOS Tracker - crowd-sourced wait-time estimates at the provincial office",
+       "Micro-credentials - digital badges to add to CV / LinkedIn",
+       "Bilingual Co-op - paired projects with a local Polish student",
+       "Micro-Consulting - 4-6 week real consulting project with a Poznan company",
+       "Verified Talent Hub - validated profile sent directly to HR"
+     ]},
+     {id:"likelihood", lb:"How likely are you to use BizBridge? (1 = Definitely not, 5 = Definitely yes)", ty:"rating", max:5, req:1, el:"Definitely not", er:"Definitely yes"},
+     {id:"openFeedback", lb:"Anything else you wish to share?", ty:"textarea", ph:"Your honest take, ideas, criticism...", req:0}
+   ]
+  }
 ];
 
 function gotoStep(n){
@@ -225,6 +409,7 @@ function render(){
   h+='<div class="phase-badge '+(s.ph===1?"p1":"p2")+'">'+s.pl+"</div>";
   h+='<h2 class="s-title">'+s.ti+"</h2>";
   h+='<p class="s-desc">'+s.de+"</p>";
+  if(s.hint)h+='<div class="hint-box">'+s.hint+'</div>';
   h+='<div class="card">';
   for(var fi=0;fi<s.fi.length;fi++){
     var f=s.fi[fi];var sv=ans[f.id];
@@ -309,14 +494,24 @@ function validate(){
 function submit(){
   document.getElementById("ov").classList.add("show");
   var payload={
-    fullName:ans.fullName||"",age:ans.age||"",nationality:ans.nationality||"",
-    university:ans.university||"",program:ans.program||"",year:ans.year||"",
-    polish:ans.polish||"",english:ans.english||"",german:ans.german||"",
-    workExp:ans.workExp||"",challenges:ans.challenges||[],
-    legalAware:ans.legalAware||"",usedTools:ans.usedTools||"",
-    overallRating:ans.overallRating||"",valuedFeatures:ans.valuedFeatures||[],
-    likelihood:ans.likelihood||"",recommend:ans.recommend||"",
-    missing:ans.missing||"",openFeedback:ans.openFeedback||""
+    fullName:ans.fullName||"", age:ans.age||"", nationality:ans.nationality||"",
+    position:ans.position||"", industry:ans.industry||"", education:ans.education||"", location:ans.location||"",
+    story:ans.story||"",
+    goals:ans.goals||[], goalsOther:ans.goalsOther||"",
+    wants:ans.wants||[], wantsOther:ans.wantsOther||"",
+    needs:ans.needs||[], needsOther:ans.needsOther||"",
+    fears:ans.fears||[], fearsOther:ans.fearsOther||"",
+    toolsProficient:ans.toolsProficient||[],
+    toolsProficientOther:ans.toolsProficientOther||"",
+    toolsLearning:ans.toolsLearning||[],
+    toolsLearningOther:ans.toolsLearningOther||"",
+    toolsFrustrated:ans.toolsFrustrated||[],
+    toolsFrustratedOther:ans.toolsFrustratedOther||"",
+    often:ans.often||[], seldom:ans.seldom||[],
+    overallRating:ans.overallRating||"",
+    valuedFeatures:ans.valuedFeatures||[],
+    likelihood:ans.likelihood||"",
+    openFeedback:ans.openFeedback||""
   };
   fetch(WEBHOOK,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)})
     .catch(function(e){console.warn(e);});

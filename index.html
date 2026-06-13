@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BizBridge Survey — Poznań International Students</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal:         #1D9E75;
+    --teal-dark:    #0F6E56;
+    --teal-light:   #E1F5EE;
+    --teal-mid:     #9FE1CB;
+    --purple:       #534AB7;
+    --purple-dark:  #3C3489;
+    --purple-light: #EEEDFE;
+    --purple-mid:   #AFA9EC;
+    --coral:        #D85A30;
+    --coral-light:  #FAECE7;
+    --gray-50:      #F8F7F4;
+    --gray-100:     #F1EFE8;
+    --gray-200:     #D3D1C7;
+    --gray-400:     #888780;
+    --gray-600:     #5F5E5A;
+    --text-primary:   #1a1a18;
+    --text-secondary: #5F5E5A;
+    --text-hint:      #888780;
+    --border:    rgba(0,0,0,0.10);
+    --border-md: rgba(0,0,0,0.18);
+    --bg:        #ffffff;
+    --bg-surface:#F8F7F4;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --shadow:    0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --teal:         #5DCAA5;
+      --teal-dark:    #9FE1CB;
+      --teal-light:   #04342C;
+      --teal-mid:     #085041;
+      --purple:       #AFA9EC;
+      --purple-dark:  #CECBF6;
+      --purple-light: #26215C;
+      --purple-mid:   #534AB7;
+      --coral:        #F0997B;
+      --coral-light:  #4A1B0C;
+      --gray-50:      #1e1e1c;
+      --gray-100:     #2C2C2A;
+      --gray-200:     #444441;
+      --gray-400:     #888780;
+      --gray-600:     #B4B2A9;
+      --text-primary:   #e8e6e0;
+      --text-secondary: #B4B2A9;
+      --text-hint:      #888780;
+      --border:    rgba(255,255,255,0.08);
+      --border-md: rgba(255,255,255,0.15);
+      --bg:        #1a1a18;
+      --bg-surface:#111110;
+      --shadow:    0 1px 3px rgba(0,0,0,0.4);
+    }
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  .site-header {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .logo-mark {
+    width: 32px; height: 32px;
+    background: var(--teal);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 16px;
+  }
+  .logo-text { font-size: 15px; font-weight: 600; color: var(--text-primary); }
+  .logo-sub  { font-size: 12px; color: var(--text-secondary); margin-left: 4px; }
+
+  .page { max-width: 640px; margin: 0 auto; padding: 32px 20px 80px; }
+
+  .progress-wrap { margin-bottom: 28px; }
+  .progress-meta { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .progress-label { font-size: 13px; font-weight: 500; color: var(--text-secondary); }
+  .progress-count { font-size: 13px; color: var(--text-hint); }
+  .progress-track { height: 4px; background: var(--gray-100); border-radius: 99px; overflow: hidden; }
+  .progress-fill  { height: 100%; background: var(--teal); border-radius: 99px; transition: width 0.4s ease; }
+
+  .phase-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 99px; margin-bottom: 10px;
+  }
+  .badge-p1 { background: var(--teal-light); color: var(--teal-dark); }
+  .badge-p2 { background: var(--purple-light); color: var(--purple-dark); }
+
+  .step-heading { font-size: 22px; font-weight: 600; margin-bottom: 6px; line-height: 1.3; }
+  .step-desc    { font-size: 14px; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.7; }
+
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow);
+  }
+
+  .field + .field { margin-top: 20px; }
+  .field-label {
+    display: block; font-size: 13px; font-weight: 500;
+    color: var(--text-secondary); margin-bottom: 7px;
+  }
+  .field-label .req { color: var(--coral); margin-left: 2px; }
+
+  input[type=text], input[type=email], input[type=number], select, textarea {
+    width: 100%;
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    padding: 9px 13px;
+    border: 1px solid var(--border-md);
+    border-radius: var(--radius-sm);
+    background: var(--bg); color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    -webkit-appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(29,158,117,0.15);
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px;
+  }
+  textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+
+  .choice-group { display: flex; flex-direction: column; gap: 7px; }
+  .choice-item {
+    display: flex; align-items: flex-start; gap: 11px;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.12s;
+    user-select: none;
+  }
+  .choice-item:hover { background: var(--gray-50); border-color: var(--border-md); }
+  .choice-item.sel   { border-color: var(--teal); background: var(--teal-light); }
+  .choice-item.sel .choice-label { color: var(--teal-dark); font-weight: 500; }
+
+  .choice-dot {
+    width: 17px; height: 17px; border-radius: 50%;
+    border: 1.5px solid var(--gray-200); flex-shrink: 0; margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .choice-item.sel .choice-dot { background: var(--teal); border-color: var(--teal); }
+  .dot-inner { width: 6px; height: 6px; background: #fff; border-radius: 50%; display: none; }
+  .choice-item.sel .dot-inner { display: block; }
+
+  .choice-box {
+    width: 17px; height: 17px; border-radius: 4px;
+    border: 1.5px solid var(--gray-200); flex-shrink: 0; margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .choice-item.sel .choice-box { background: var(--teal); border-color: var(--teal); }
+  .box-check { display: none; color: #fff; font-size: 11px; font-weight: 700; }
+  .choice-item.sel .box-check { display: block; }
+  .choice-label { font-size: 14px; color: var(--text-primary); line-height: 1.5; }
+
+  .rating-grid { display: flex; gap: 6px; flex-wrap: wrap; }
+  .rating-btn {
+    width: 42px; height: 42px;
+    border: 1px solid var(--border-md);
+    border-radius: var(--radius-sm);
+    background: var(--bg); color: var(--text-primary);
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.12s;
+  }
+  .rating-btn:hover { background: var(--gray-50); }
+  .rating-btn.sel   { background: var(--teal); color: #fff; border-color: var(--teal-dark); }
+  .rating-ends {
+    display: flex; justify-content: space-between;
+    font-size: 11px; color: var(--text-hint); margin-top: 6px;
+  }
+
+  .field-err { font-size: 12px; color: var(--coral); margin-top: 5px; display: none; }
+  .field-err.show { display: block; }
+
+  .nav-row { display: flex; gap: 10px; margin-top: 24px; }
+  .btn-back {
+    flex: 1; padding: 11px 16px;
+    border: 1px solid var(--border-md); border-radius: var(--radius-sm);
+    background: var(--bg); color: var(--text-secondary);
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    transition: background 0.12s;
+  }
+  .btn-back:hover { background: var(--gray-50); }
+  .btn-next {
+    flex: 2; padding: 11px 20px;
+    border: none; border-radius: var(--radius-sm);
+    background: var(--teal); color: #fff;
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    transition: background 0.12s, transform 0.08s;
+  }
+  .btn-next:hover   { background: var(--teal-dark); }
+  .btn-next:active  { transform: scale(0.98); }
+  .btn-next:disabled{ background: var(--gray-200); color: var(--gray-400); cursor: not-allowed; }
+
+  .intro-hero {
+    background: linear-gradient(135deg, #0F6E56 0%, #1D9E75 60%, #5DCAA5 100%);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px; color: #fff; margin-bottom: 20px;
+  }
+  .intro-hero h1   { font-size: 26px; font-weight: 700; margin-bottom: 6px; }
+  .intro-hero p    { font-size: 14px; opacity: .88; line-height: 1.6; margin-bottom: 18px; }
+  .pill-row        { display: flex; flex-wrap: wrap; gap: 7px; }
+  .pill {
+    font-size: 11px; font-weight: 600;
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 99px; padding: 4px 11px; color: #fff;
+  }
+  .intro-meta {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px;
+  }
+  .meta-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius-md); padding: 14px 16px; text-align: center; box-shadow: var(--shadow);
+  }
+  .meta-num { font-size: 22px; font-weight: 700; color: var(--teal); }
+  .meta-lbl { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+  .intro-note { font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.7; }
+  .btn-start {
+    width: 100%; padding: 14px;
+    border: none; border-radius: var(--radius-sm);
+    background: var(--teal); color: #fff;
+    font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: background 0.12s;
+  }
+  .btn-start:hover { background: var(--teal-dark); }
+
+  .success-wrap { text-align: center; padding: 48px 20px; }
+  .success-icon {
+    width: 72px; height: 72px; background: var(--teal-light); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; font-size: 32px; color: var(--teal);
+  }
+  .success-wrap h2 { font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+  .success-wrap p  { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px; }
+  .sheet-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13px; font-weight: 500;
+    padding: 9px 18px; border: 1px solid var(--border-md);
+    border-radius: var(--radius-sm); color: var(--text-primary);
+    text-decoration: none; margin-bottom: 16px;
+    transition: background 0.12s;
+  }
+  .sheet-btn:hover { background: var(--gray-50); }
+  .btn-again {
+    display: block; width: fit-content; margin: 0 auto;
+    padding: 10px 28px; border: none; border-radius: var(--radius-sm);
+    background: var(--teal); color: #fff;
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: background 0.12s;
+  }
+  .btn-again:hover { background: var(--teal-dark); }
+
+  .sending-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(255,255,255,0.85);
+    z-index: 100;
+    flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  }
+  .sending-overlay.show { display: flex; }
+  .spinner {
+    width: 36px; height: 36px;
+    border: 3px solid var(--teal-light); border-top-color: var(--teal);
+    border-radius: 50%; animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .sending-text { font-size: 15px; font-weight: 500; color: var(--text-secondary); }
+
+  .err-banner {
+    display: none; background: var(--coral-light); border: 1px solid var(--coral);
+    border-radius: var(--radius-sm); padding: 12px 16px;
+    font-size: 13px; color: var(--coral); margin-top: 12px; line-height: 1.6;
+  }
+  .err-banner.show { display: block; }
+
+  @media (max-width: 520px) {
+    .intro-meta { grid-template-columns: 1fr 1fr; }
+    .meta-card:last-child { grid-column: span 2; }
+    .rating-btn { width: 36px; height: 36px; font-size: 13px; }
+    .step-heading { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-mark"><i class="ti ti-building-bridge"></i></div>
+  <span class="logo-text">BizBridge</span>
+  <span class="logo-sub">Poznań — Design Thinking Survey</span>
+</header>
+
+<div class="sending-overlay" id="overlay">
+  <div class="spinner"></div>
+  <div class="sending-text">Submitting your response…</div>
+</div>
+
+<main class="page" id="app">
+
+  <!-- ── INTRO ─────────────────────────────────────────────────────────────── -->
+  <div id="screen-intro">
+    <div class="intro-hero">
+      <h1>Poznań BizBridge</h1>
+      <p>Help us build the right solution for international students in Poznań. Your answers directly shape what we design next.</p>
+      <div class="pill-row">
+        <span class="pill">Sandbox SAP / Salesforce</span>
+        <span class="pill">Legal Navigator</span>
+        <span class="pill">Bilingual Co-op</span>
+        <span class="pill">Verified Talent Hub</span>
+      </div>
+    </div>
+
+    <div class="intro-meta">
+      <div class="meta-card"><div class="meta-num">2</div><div class="meta-lbl">Parts</div></div>
+      <div class="meta-card"><div class="meta-num">10</div><div class="meta-lbl">Questions</div></div>
+      <div class="meta-card"><div class="meta-num">~5 min</div><div class="meta-lbl">Estimated</div></div>
+    </div>
+
+    <p class="intro-note">
+      <strong>Part 1 — Persona:</strong> We want to understand who you are, your current situation, and the obstacles you face when looking for work in Poznań.<br><br>
+      <strong>Part 2 — Feedback:</strong> After learning about BizBridge, tell us what resonates, what's missing, and how likely you are to use it.
+    </p>
+
+    <button class="btn-start" onclick="gotoStep(1)">
+      Start the survey &nbsp;<i class="ti ti-arrow-right"></i>
+    </button>
+  </div>
+
+  <!-- ── STEPS ──────────────────────────────────────────────────────────────── -->
+  <div id="screen-steps" style="display:none">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span class="progress-label" id="prog-label">Part 1 — Persona</span>
+        <span class="progress-count" id="prog-count">1 / 10</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="pbar" style="width:10%"></div>
+      </div>
+    </div>
+    <div id="step-content"></div>
+    <div class="nav-row">
+      <button class="btn-back" id="btn-back" onclick="prevStep()">
+        <i class="ti ti-arrow-left"></i> Back
+      </button>
+      <button class="btn-next" id="btn-next" onclick="nextStep()">
+        Next <i class="ti ti-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── SUCCESS ────────────────────────────────────────────────────────────── -->
+  <div id="screen-success" style="display:none">
+    <div class="success-wrap">
+      <div class="success-icon"><i class="ti ti-check"></i></div>
+      <h2>Thank you!</h2>
+      <p>Your response has been saved to Google Sheets. It will directly inform how BizBridge is designed and prioritised.</p>
+      <a class="sheet-btn"
+         href="https://docs.google.com/spreadsheets/d/1scAx5-qtNYFvYpWawFuit1CvZmUDUy1pxgLR7Bixk-w"
+         target="_blank" rel="noopener">
+        <i class="ti ti-table"></i> View all responses in Google Sheets
+      </a><br>
+      <button class="btn-again" onclick="resetSurvey()">Submit another response</button>
+    </div>
+  </div>
+
+</main>
+
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// ⚙️  CONFIGURATION — paste your Apps Script Web App URL here after deploying
+// ─────────────────────────────────────────────────────────────────────────────
+const APPS_SCRIPT_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+// Example: "https://script.google.com/macros/s/AKfycb.../exec"
+// ─────────────────────────────────────────────────────────────────────────────
+
+const answers = {};
+let currentStep = 0;
+
+const steps = [
+  // ── PART 1 ──
+  {
+    phase:1, phaseLabel:"Part 1 — Persona",
+    title:"Personal background",
+    desc:"Help us understand who you are and where you're coming from.",
+    fields:[
+      {id:"fullName",    label:"Full name",    type:"text",   placeholder:"e.g. Nguyen Van A",         req:true},
+      {id:"age",         label:"Age",          type:"number", placeholder:"e.g. 22",                   req:true},
+      {id:"nationality", label:"Nationality",  type:"text",   placeholder:"e.g. Vietnamese, Indian…",  req:true},
+    ]
+  },
+  {
+    phase:1, phaseLabel:"Part 1 — Persona",
+    title:"Your studies in Poznań",
+    desc:"Tell us about your university and programme.",
+    fields:[
+      {id:"university", label:"University", type:"select", req:true, options:[
+        "-- Select your university --",
+        "Poznań University of Economics and Business (PUEB)",
+        "WSB Merito University",
+        "Adam Mickiewicz University (UAM)",
+        "Poznań University of Technology",
+        "Other"
+      ]},
+      {id:"program", label:"Study programme", type:"text", placeholder:"e.g. Business Administration, Logistics, Finance…", req:true},
+      {id:"year",    label:"Year of study",   type:"select", req:true, options:[
+        "-- Select year --",
+        "1st year (Bachelor's)",
+        "2nd year (Bachelor's)",
+        "3rd year (Bachelor's)",
+        "4th year (Bachelor's)",
+        "1st year (Master's)",
+        "2nd year (Master's)"
+      ]},
+    ]
+  },
+  {
+    phase:1, phaseLabel:"Part 1 — Persona",
+    title:"Language skills",
+    desc:"Language proficiency directly affects job opportunities in Poznań — be honest here.",
+    fields:[
+      {id:"polish",  label:"Polish",            type:"select", req:true,  options:["-- Select level --","None (A0)","Beginner (A1–A2)","Intermediate (B1–B2)","Advanced (C1–C2)"]},
+      {id:"english", label:"English",           type:"select", req:true,  options:["-- Select level --","Beginner (A1–A2)","Intermediate (B1–B2)","Advanced (C1–C2)","Native / Near-native"]},
+      {id:"german",  label:"German (optional)", type:"select", req:false, options:["-- None --","Beginner (A1–A2)","Intermediate (B1–B2)","Advanced (C1–C2)"]},
+    ]
+  },
+  {
+    phase:1, phaseLabel:"Part 1 — Persona",
+    title:"Work experience",
+    desc:"What does your professional background look like right now?",
+    fields:[
+      {id:"workExp", label:"Current experience status", type:"radio", req:true, options:[
+        "No experience yet",
+        "Working part-time in Poland",
+        "Completed an internship in Poland",
+        "Have professional experience abroad",
+        "Actively looking for my first job"
+      ]}
+    ]
+  },
+  {
+    phase:1, phaseLabel:"Part 1 — Persona",
+    title:"Biggest challenges",
+    desc:"Which of these obstacles have you personally faced when looking for work in Poznań? Select all that apply.",
+    fields:[
+      {id:"challenges", label:"Challenges you face", type:"checkbox", req:true, options:[
+        "Lack of practical skills (SAP, Excel, Salesforce, ERP systems)",
+        "Language barrier — Polish or German",
+        "Unclear legal situation (residence permit, work permit)",
+        "No local professional network",
+        "CV ignored by employers or ATS filters",
+        "Don't know where or how to start"
+      ]}
+    ]
+  },
+  {
+    phase:1, phaseLabel:"Part 1 — Persona",
+    title:"Legal awareness & tool experience",
+    desc:"Two quick questions to close out the Persona section.",
+    fields:[
+      {id:"legalAware", label:"How well do you understand your legal right to work in Poland?", type:"radio", req:true, options:[
+        "Very clearly — I know all the rules",
+        "Roughly — but I have unanswered questions",
+        "Not well — I find it confusing",
+        "I haven't needed to think about it yet"
+      ]},
+      {id:"usedTools", label:"Have you ever used SAP, Salesforce, or any ERP system professionally?", type:"radio", req:true, options:[
+        "Never",
+        "Studied theory only, no hands-on practice",
+        "Used them in an academic setting",
+        "Used them in a real work environment"
+      ]}
+    ]
+  },
+  // ── PART 2 ──
+  {
+    phase:2, phaseLabel:"Part 2 — Solution feedback",
+    title:"Overall impression of BizBridge",
+    desc:"BizBridge is an integrated ecosystem for international students in Poznań: a job-simulation sandbox (SAP/Salesforce), a legal residency navigator, a bilingual co-op programme, and a verified talent hub for employers. How compelling does this feel to you?",
+    fields:[
+      {id:"overallRating", label:"Overall appeal  (1 = Not useful at all,  10 = Extremely valuable)", type:"rating", max:10, req:true, endLeft:"Not useful", endRight:"Extremely valuable"}
+    ]
+  },
+  {
+    phase:2, phaseLabel:"Part 2 — Solution feedback",
+    title:"Most valuable features",
+    desc:"Which parts of BizBridge would you actually use? Select everything that applies to your situation.",
+    fields:[
+      {id:"valuedFeatures", label:"Features you find valuable", type:"checkbox", req:true, options:[
+        "Job simulation sandbox — practice real tasks in SAP/Salesforce",
+        "Legal Navigator — step-by-step residence permit guidance",
+        "MOS Tracker — crowd-sourced wait-time estimates at the provincial office",
+        "Micro-credentials — digital badges to add to CV / LinkedIn",
+        "Bilingual Co-op — paired projects with a local Polish student",
+        "Micro-Consulting — 4–6 week real consulting project with a Poznań company",
+        "Verified Talent Hub — validated profile sent directly to HR"
+      ]}
+    ]
+  },
+  {
+    phase:2, phaseLabel:"Part 2 — Solution feedback",
+    title:"Likelihood to use & recommend",
+    desc:"Two short rating questions.",
+    fields:[
+      {id:"likelihood", label:"How likely are you to use BizBridge when it launches?  (1 = Definitely not,  5 = Definitely yes)", type:"rating", max:5, req:true, endLeft:"Definitely not", endRight:"Definitely yes"},
+      {id:"recommend",  label:"How likely are you to recommend it to other international students?  (1–5)",                        type:"rating", max:5, req:true, endLeft:"Wouldn't recommend", endRight:"Would strongly recommend"},
+    ]
+  },
+  {
+    phase:2, phaseLabel:"Part 2 — Solution feedback",
+    title:"Open feedback",
+    desc:"The most valuable part of any Design Thinking survey. Be as direct as you like.",
+    fields:[
+      {id:"missing",      label:"What feature do you wish BizBridge had, but doesn't seem to include?", type:"textarea", placeholder:"e.g. specific mentor matching, community forum, more language support…", req:false},
+      {id:"openFeedback", label:"Any other thoughts on the BizBridge concept?",                          type:"textarea", placeholder:"Your honest take…", req:false}
+    ]
+  }
+];
+
+// ── Navigation ────────────────────────────────────────────────────────────────
+function gotoStep(n) {
+  document.getElementById("screen-intro").style.display = "none";
+  document.getElementById("screen-steps").style.display = "block";
+  currentStep = n;
+  renderStep();
+}
+function prevStep() {
+  if (currentStep > 1) { currentStep--; renderStep(); }
+  else {
+    document.getElementById("screen-intro").style.display = "block";
+    document.getElementById("screen-steps").style.display = "none";
+  }
+}
+function nextStep() {
+  if (!validateStep()) return;
+  if (currentStep < steps.length) { currentStep++; renderStep(); }
+  else submitSurvey();
+}
+
+// ── Render step ───────────────────────────────────────────────────────────────
+function renderStep() {
+  const s = steps[currentStep - 1];
+  const total = steps.length;
+  document.getElementById("pbar").style.width = Math.round((currentStep / total) * 100) + "%";
+  document.getElementById("prog-label").textContent = s.phaseLabel;
+  document.getElementById("prog-count").textContent = currentStep + " / " + total;
+  document.getElementById("btn-back").style.visibility = currentStep === 1 ? "hidden" : "visible";
+  document.getElementById("btn-next").innerHTML =
+    currentStep === total
+      ? '<i class="ti ti-send"></i> Submit survey'
+      : 'Next <i class="ti ti-arrow-right"></i>';
+
+  let html = `<div class="phase-badge ${s.phase===1?'badge-p1':'badge-p2'}">
+    <i class="ti ti-${s.phase===1?'user':'message-dots'}"></i>${s.phaseLabel}</div>
+    <h2 class="step-heading">${s.title}</h2>
+    <p class="step-desc">${s.desc}</p>
+    <div class="card">`;
+
+  s.fields.forEach((f) => {
+    const saved = answers[f.id];
+    html += `<div class="field">`;
+    html += `<label class="field-label">${f.label}${f.req ? '<span class="req">*</span>' : ''}</label>`;
+
+    if (f.type === "text" || f.type === "number") {
+      html += `<input type="${f.type}" id="f_${f.id}" placeholder="${f.placeholder||''}" value="${saved||''}" oninput="answers['${f.id}']=this.value">`;
+
+    } else if (f.type === "select") {
+      html += `<select id="f_${f.id}" onchange="answers['${f.id}']=this.value">`;
+      f.options.forEach(o => { html += `<option value="${o}"${saved===o?" selected":""}>${o}</option>`; });
+      html += `</select>`;
+
+    } else if (f.type === "textarea") {
+      html += `<textarea id="f_${f.id}" placeholder="${f.placeholder||''}" oninput="answers['${f.id}']=this.value">${saved||''}</textarea>`;
+
+    } else if (f.type === "radio") {
+      html += `<div class="choice-group">`;
+      f.options.forEach(o => {
+        const sel = saved === o;
+        html += `<div class="choice-item${sel?' sel':''}" onclick="pickRadio('${f.id}',this,'${esc(o)}')">
+          <div class="choice-dot"><div class="dot-inner"></div></div>
+          <span class="choice-label">${o}</span></div>`;
+      });
+      html += `</div>`;
+
+    } else if (f.type === "checkbox") {
+      const savedArr = saved || [];
+      html += `<div class="choice-group">`;
+      f.options.forEach(o => {
+        const sel = savedArr.includes(o);
+        html += `<div class="choice-item${sel?' sel':''}" onclick="toggleCheck('${f.id}',this,'${esc(o)}')">
+          <div class="choice-box"><span class="box-check">✓</span></div>
+          <span class="choice-label">${o}</span></div>`;
+      });
+      html += `</div>`;
+
+    } else if (f.type === "rating") {
+      const sv = saved || 0;
+      html += `<div class="rating-grid" id="rg_${f.id}">`;
+      for (let i = 1; i <= f.max; i++) {
+        html += `<button class="rating-btn${sv===i?' sel':''}" onclick="pickRating('${f.id}',${i},${f.max})">${i}</button>`;
+      }
+      html += `</div>`;
+      if (f.endLeft) html += `<div class="rating-ends"><span>${f.endLeft}</span><span>${f.endRight}</span></div>`;
+    }
+
+    html += `<div class="field-err" id="err_${f.id}">Please answer this question.</div>`;
+    html += `</div>`;
+  });
+
+  html += `</div>`;
+  document.getElementById("step-content").innerHTML = html;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function esc(s) { return s.replace(/\\/g, "\\\\").replace(/'/g, "\\'"); }
+
+// ── Interactions ──────────────────────────────────────────────────────────────
+function pickRadio(id, el, val) {
+  answers[id] = val;
+  el.closest(".choice-group").querySelectorAll(".choice-item").forEach(i => i.classList.remove("sel"));
+  el.classList.add("sel");
+  clearErr(id);
+}
+function toggleCheck(id, el, val) {
+  if (!answers[id]) answers[id] = [];
+  const idx = answers[id].indexOf(val);
+  if (idx > -1) { answers[id].splice(idx, 1); el.classList.remove("sel"); }
+  else           { answers[id].push(val);      el.classList.add("sel"); }
+  clearErr(id);
+}
+function pickRating(id, val, max) {
+  answers[id] = val;
+  document.getElementById("rg_" + id).querySelectorAll(".rating-btn").forEach((b, i) => {
+    b.classList.toggle("sel", i + 1 === val);
+  });
+  clearErr(id);
+}
+function clearErr(id) {
+  const el = document.getElementById("err_" + id);
+  if (el) el.classList.remove("show");
+}
+
+// ── Validate ──────────────────────────────────────────────────────────────────
+function validateStep() {
+  const s = steps[currentStep - 1];
+  let ok = true;
+  s.fields.forEach(f => {
+    const errEl = document.getElementById("err_" + f.id);
+    if (!f.req) return;
+    const v = answers[f.id];
+    let invalid = false;
+    if      (f.type === "checkbox") invalid = !v || v.length === 0;
+    else if (f.type === "rating")   invalid = !v || v === 0;
+    else if (f.type === "select")   invalid = !v || v.startsWith("--");
+    else                             invalid = !v || String(v).trim() === "";
+    if (invalid) { if (errEl) errEl.classList.add("show"); ok = false; }
+    else         { if (errEl) errEl.classList.remove("show"); }
+  });
+  return ok;
+}
+
+// ── Submit ────────────────────────────────────────────────────────────────────
+async function submitSurvey() {
+  document.getElementById("overlay").classList.add("show");
+
+  const payload = {
+    fullName:       answers.fullName        || "",
+    age:            answers.age             || "",
+    nationality:    answers.nationality     || "",
+    university:     answers.university      || "",
+    program:        answers.program         || "",
+    year:           answers.year            || "",
+    polish:         answers.polish          || "",
+    english:        answers.english         || "",
+    german:         answers.german          || "",
+    workExp:        answers.workExp         || "",
+    challenges:     answers.challenges      || [],
+    legalAware:     answers.legalAware      || "",
+    usedTools:      answers.usedTools       || "",
+    overallRating:  answers.overallRating   || "",
+    valuedFeatures: answers.valuedFeatures  || [],
+    likelihood:     answers.likelihood      || "",
+    recommend:      answers.recommend       || "",
+    missing:        answers.missing         || "",
+    openFeedback:   answers.openFeedback    || ""
+  };
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method:  "POST",
+      mode:    "no-cors",             // Apps Script doesn't send CORS headers by default
+      headers: { "Content-Type": "application/json" },
+      body:    JSON.stringify(payload)
+    });
+  } catch (err) {
+    console.warn("Fetch error (may still have written):", err);
+  }
+
+  document.getElementById("overlay").classList.remove("show");
+  document.getElementById("screen-steps").style.display  = "none";
+  document.getElementById("screen-success").style.display = "block";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function resetSurvey() {
+  Object.keys(answers).forEach(k => delete answers[k]);
+  currentStep = 0;
+  document.getElementById("screen-success").style.display = "none";
+  document.getElementById("screen-intro").style.display   = "block";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+</script>
+</body>
+</html>

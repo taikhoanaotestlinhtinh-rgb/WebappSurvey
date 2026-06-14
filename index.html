@@ -84,6 +84,17 @@ textarea{resize:vertical;min-height:90px;line-height:1.6}
 .mnum{font-size:22px;font-weight:700;color:var(--teal)}
 .mlbl{font-size:11px;color:var(--text-secondary);margin-top:2px}
 .inote{font-size:13px;color:var(--text-secondary);margin-bottom:20px;line-height:1.7}
+.about-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--rlg);padding:20px 24px;margin-bottom:20px;box-shadow:var(--shadow)}
+.about-header{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:12px}
+.about-icon{width:26px;height:26px;background:var(--teal-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--teal-dark);flex-shrink:0}
+.about-body{font-size:13px;color:var(--text-secondary);line-height:1.7}
+.about-goals{display:flex;flex-direction:column;gap:7px;margin:14px 0}
+.about-goal{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:var(--text-primary);line-height:1.5}
+.ag-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.ag-teal{background:var(--teal)}
+.ag-blue{background:var(--blue)}
+.ag-amber{background:var(--amber)}
+.about-anon{font-size:12px;color:var(--text-hint);margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
 .bstart{display:block;width:100%;padding:15px;border:none;border-radius:var(--rsm);background:var(--teal);color:#fff;font-family:'Inter',sans-serif;font-size:16px;font-weight:600;cursor:pointer;transition:background 0.12s;text-align:center}
 .bstart:hover{background:var(--teal-dark)}
 .swrap{text-align:center;padding:48px 20px}
@@ -131,6 +142,26 @@ textarea{resize:vertical;min-height:90px;line-height:1.6}
       <div class="mcard"><div class="mnum">~12</div><div class="mlbl">Questions</div></div>
       <div class="mcard"><div class="mnum">~7 min</div><div class="mlbl">Estimated</div></div>
     </div>
+
+    <div class="about-card">
+      <div class="about-header">
+        <div class="about-icon">?</div>
+        <span>What is this survey about?</span>
+      </div>
+      <p class="about-body">
+        We are a student team at Poznan University developing <strong>BizBridge</strong> &mdash; a platform designed to help international students in Poznan find jobs, navigate legal paperwork, and gain real work experience.
+      </p>
+      <p class="about-body" style="margin-top:10px">
+        Before we build anything, we want to deeply understand <strong>who you are</strong> and <strong>what you actually struggle with</strong>. This survey follows the <em>Design Thinking</em> methodology, meaning we are listening first and building second.
+      </p>
+      <div class="about-goals">
+        <div class="about-goal"><span class="ag-dot ag-teal"></span>Understand the real challenges international students face</div>
+        <div class="about-goal"><span class="ag-dot ag-blue"></span>Map your goals, needs and fears before designing any solution</div>
+        <div class="about-goal"><span class="ag-dot ag-amber"></span>Validate whether BizBridge solves the right problems</div>
+      </div>
+      <p class="about-anon">&#128274; Your answers are anonymous and used for research purposes only.</p>
+    </div>
+
     <p class="inote">
       <strong>Part 1 &mdash; Persona Profile (Design Thinking):</strong> Tell us about yourself, your story, your goals, wants, needs and fears as an international student in Poznan.<br><br>
       <strong>Part 2 &mdash; Solution Feedback:</strong> After learning about BizBridge, share what resonates and what is missing.
@@ -156,13 +187,14 @@ textarea{resize:vertical;min-height:90px;line-height:1.6}
       <div class="sicon">&#10003;</div>
       <h2>Thank you!</h2>
       <p>Your Persona has been saved. It will directly inform how BizBridge is designed for students like you.</p>
+      <a class="sbtn" href="https://docs.google.com/spreadsheets/d/1scAx5-qtNYFvYpWawFuit1CvZmUDUy1pxgLR7Bixk-w" target="_blank" rel="noopener">View responses in Google Sheets</a>
       <br>
       <button class="bagain" onclick="resetSurvey()">Submit another response</button>
     </div>
   </div>
 </main>
 <script>
-var WEBHOOK = "https://script.google.com/macros/s/AKfycbz9L4-mQGSYqYBBVNV3IUTk30v4wo6xKaJEMsLBompuNrLShdSXbxPkN6Lrulcflt2GtA/exec";
+var WEBHOOK = "https://script.google.com/macros/s/AKfycbztpJzXY9Rz4kEIlUl9d9arp6lpEbV1nnB9YbHzi-ZTq7tPH_2G3FMsG7kutzk5zR9miA/exec";
 var ans = {};
 var step = 0;
 

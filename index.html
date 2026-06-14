@@ -163,7 +163,7 @@ textarea{resize:vertical;min-height:90px;line-height:1.6}
   </div>
 </main>
 <script>
-var WEBHOOK = "https://script.google.com/macros/s/AKfycbztpJzXY9Rz4kEIlUl9d9arp6lpEbV1nnB9YbHzi-ZTq7tPH_2G3FMsG7kutzk5zR9miA/exec";
+var WEBHOOK = "https://script.google.com/macros/s/AKfycbz9L4-mQGSYqYBBVNV3IUTk30v4wo6xKaJEMsLBompuNrLShdSXbxPkN6Lrulcflt2GtA/exec";
 var ans = {};
 var step = 0;
 
@@ -343,20 +343,33 @@ var steps = [
        "JustJoin.it",
        "University career office",
        "Friends and word-of-mouth",
-       "Facebook groups"
-     ]},
-     {id:"oftenOther", lb:"Other platforms you use often (optional)", ty:"textarea", ph:"e.g. specific Vietnamese / Indian / Ukrainian community groups, niche job boards, Telegram channels...", req:0},
-
-     {id:"seldom", lb:"Platforms you RARELY or NEVER use", ty:"checkbox", req:0, op:[
+       "Facebook groups",
        "Job fairs",
-       "Facebook job groups",
        "Company career pages",
-       "University career office",
        "Headhunters / recruiters",
        "Local Polish-only job boards",
        "Telegram / Discord communities"
      ]},
-     {id:"seldomOther", lb:"Other platforms you rarely use (optional)", ty:"textarea", ph:"e.g. platforms you know exist but avoid, and why...", req:0}
+     {id:"oftenOther", lb:"Other platforms you use often (optional)", ty:"textarea", ph:"e.g. specific Vietnamese / Indian / Ukrainian community groups, niche job boards...", req:0},
+
+     {id:"seldom", lb:"Platforms you RARELY or NEVER use", ty:"checkbox", req:0, op:[
+       "LinkedIn",
+       "Pracuj.pl",
+       "OLX",
+       "Cityjob.pl",
+       "Glassdoor",
+       "Indeed",
+       "JustJoin.it",
+       "University career office",
+       "Friends and word-of-mouth",
+       "Facebook groups",
+       "Job fairs",
+       "Company career pages",
+       "Headhunters / recruiters",
+       "Local Polish-only job boards",
+       "Telegram / Discord communities"
+     ]},
+     {id:"seldomOther", lb:"Other platforms you rarely or never use (optional)", ty:"textarea", ph:"e.g. platforms you know exist but actively avoid, and why...", req:0}
    ]
   },
 

@@ -345,6 +345,8 @@ var steps = [
        "Friends and word-of-mouth",
        "Facebook groups"
      ]},
+     {id:"oftenOther", lb:"Other platforms you use often (optional)", ty:"textarea", ph:"e.g. specific Vietnamese / Indian / Ukrainian community groups, niche job boards, Telegram channels...", req:0},
+
      {id:"seldom", lb:"Platforms you RARELY or NEVER use", ty:"checkbox", req:0, op:[
        "Job fairs",
        "Facebook job groups",
@@ -353,7 +355,8 @@ var steps = [
        "Headhunters / recruiters",
        "Local Polish-only job boards",
        "Telegram / Discord communities"
-     ]}
+     ]},
+     {id:"seldomOther", lb:"Other platforms you rarely use (optional)", ty:"textarea", ph:"e.g. platforms you know exist but avoid, and why...", req:0}
    ]
   },
 
@@ -364,6 +367,14 @@ var steps = [
      {id:"overallRating", lb:"Overall appeal (1 = Not useful, 10 = Extremely valuable)", ty:"rating", max:10, req:1, el:"Not useful", er:"Extremely valuable"}
    ]
   },
+
+  {ph:2, pl:"Part 2 - Solution feedback", ti:"Your likelihood & feedback",
+   de:"Two final questions to wrap up.",
+   fi:[
+     {id:"likelihood", lb:"How likely are you to use BizBridge? (1 = Definitely not, 5 = Definitely yes)", ty:"rating", max:5, req:1, el:"Definitely not", er:"Definitely yes"},
+     {id:"openFeedback", lb:"Anything else you wish to share?", ty:"textarea", ph:"Your honest take, ideas, criticism...", req:0}
+   ]
+  }
 ];
 
 function gotoStep(n){
@@ -490,9 +501,9 @@ function submit(){
     toolsLearningOther:ans.toolsLearningOther||"",
     toolsFrustrated:ans.toolsFrustrated||[],
     toolsFrustratedOther:ans.toolsFrustratedOther||"",
-    often:ans.often||[], seldom:ans.seldom||[],
+    often:ans.often||[], oftenOther:ans.oftenOther||"",
+    seldom:ans.seldom||[], seldomOther:ans.seldomOther||"",
     overallRating:ans.overallRating||"",
-    valuedFeatures:ans.valuedFeatures||[],
     likelihood:ans.likelihood||"",
     openFeedback:ans.openFeedback||""
   };

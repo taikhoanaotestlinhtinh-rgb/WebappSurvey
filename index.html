@@ -364,23 +364,6 @@ var steps = [
      {id:"overallRating", lb:"Overall appeal (1 = Not useful, 10 = Extremely valuable)", ty:"rating", max:10, req:1, el:"Not useful", er:"Extremely valuable"}
    ]
   },
-
-  {ph:2, pl:"Part 2 - Solution feedback", ti:"Most valuable features",
-   de:"Which parts of BizBridge would you actually use?",
-   fi:[
-     {id:"valuedFeatures", lb:"Select all that apply", ty:"checkbox", req:1, op:[
-       "Job simulation sandbox - practice real tasks in SAP/Salesforce",
-       "Legal Navigator - step-by-step residence permit guidance",
-       "MOS Tracker - crowd-sourced wait-time estimates at the provincial office",
-       "Micro-credentials - digital badges to add to CV / LinkedIn",
-       "Bilingual Co-op - paired projects with a local Polish student",
-       "Micro-Consulting - 4-6 week real consulting project with a Poznan company",
-       "Verified Talent Hub - validated profile sent directly to HR"
-     ]},
-     {id:"likelihood", lb:"How likely are you to use BizBridge? (1 = Definitely not, 5 = Definitely yes)", ty:"rating", max:5, req:1, el:"Definitely not", er:"Definitely yes"},
-     {id:"openFeedback", lb:"Anything else you wish to share?", ty:"textarea", ph:"Your honest take, ideas, criticism...", req:0}
-   ]
-  }
 ];
 
 function gotoStep(n){
